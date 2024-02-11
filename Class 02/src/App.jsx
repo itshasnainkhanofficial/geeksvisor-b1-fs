@@ -1,11 +1,20 @@
-import './App.css'
+// import FuncAndClassComp from './components/funcandclasscomp/FuncAndClassComp'
+// import WhyComponent from './components/whycomponents/WhyComponent'
 
-import WhyComponent from './components/whycomponents/WhyComponent'
+// import PropsParent from "./components/props/PropsParent"
+import MyStates from "./components/states/MyStates"
+
+
 function App() {
+
 
   return (
     <>
-     <WhyComponent/>
+     {/* <WhyComponent/> */}
+     {/* <FuncAndClassComp/> */}
+     {/* <PropsParent/> */}
+
+     <MyStates/>
     </>
   )
 }
