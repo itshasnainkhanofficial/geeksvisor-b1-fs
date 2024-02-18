@@ -1,8 +1,11 @@
-// import FuncAndClassComp from './components/funcandclasscomp/FuncAndClassComp'
-// import WhyComponent from './components/whycomponents/WhyComponent'
+// import FuncAndClassComp from './components/2-funcandclasscomp/FuncAndClassComp'
+// import WhyComponent from './components/1-whycomponents/WhyComponent'
 
-// import PropsParent from "./components/props/PropsParent"
-import MyStates from "./components/states/MyStates"
+import Events from "./components/6-Events/Events"
+
+// import PropsParent from "./components/3-props/PropsParent"
+// import MyStates from "./components/4-states/MyStates"
+// import MyreactDesc from "./components/5-destructring/MyreactDesc"
 
 
 function App() {
@@ -14,7 +17,11 @@ function App() {
      {/* <FuncAndClassComp/> */}
      {/* <PropsParent/> */}
 
-     <MyStates/>
+     {/* <MyStates/> */}
+
+     {/* <MyreactDesc/> */}
+
+     <Events/>
     </>
   )
 }
