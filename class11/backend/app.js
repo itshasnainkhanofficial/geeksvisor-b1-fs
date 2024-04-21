@@ -77,7 +77,7 @@ app.get('/myuser', async (req, res) => {
 
 
 // Create
-app.post('/myuser',  (req, res) => {
+app.post('/myuser',  async (req, res) => {
     // console.log('myuser running')
     // console.log(req.body)
     // const { myname, myage } = req.body;
@@ -86,8 +86,8 @@ app.post('/myuser',  (req, res) => {
     try {
       const { myname, myage } = req.body;
       const sample = new SampleModel({ name: myname, age: myage });
-    //   console.log(sample)
-      sample.save();
+      console.log(sample)
+      await sample.save();
       res.status(201).json(sample);
     } catch (error) {
       console.log('Error creating sample:', error);
