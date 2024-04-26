@@ -3,9 +3,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 const app = express()
-
-
-
 dotenv.config();
 
 
@@ -25,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
   });
 
 
+// // Basic Middleware
 app.use((req, res, next) => {
   console.log("Middleware running")
   next()
@@ -52,6 +50,22 @@ app.use((req, res, next) => {
 // app.delete('/deleteStudent', (req, res) => {
 //     res.send('Delete Student')
 // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // For proper CRUD implimentation
 // schema
