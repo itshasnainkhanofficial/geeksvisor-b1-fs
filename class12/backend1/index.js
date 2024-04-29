@@ -234,20 +234,302 @@ const Student = mongoose.model("Student", StudentSchema);
 
 
 
+// // // Without error handling with middleware
+// // // Add Student
+// app.post('/student', async (req, res) => {
+//   try {
+//     const { name, fname, age } = req.body;
 
+//     if (!name || !fname || !age ) {
+//       return res.status(400).json({ error: 'Bad request', details: 'Missing name or fname or age' });
+//     }
+
+//     if(age > 100 || age < 0){
+//       return res.status(400).json({ error: 'Bad request', details: 'Invalid age' });
+//     }
+//     const newStudent = { name, fname, age }
+
+//     const newstd = new Student(newStudent);
+
+//     await newstd.save();
+
+//     return res.status(201).json(newstd);
+
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+// // Get All Students
+// app.get('/student', async (req, res) => {
+//   try {
+//     const students = await Student.find()
+//     console.log(students)
+//     if(students.length === 0){
+//       return res.json({ msg: "Student not found" });
+//     }
+    
+//     return res.status(200).json(students);
+
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+
+// // Get Single Student
+// app.get('/student/:id', async (req, res) => {
+
+//   try {
+//     const id = req.params.id
+//     const student = await Student.findById(id);
+//     console.log(student)
+//     if (!student) {
+//       return res.status(404).json({ msg: "No student found" })
+//     }
+  
+//     return res.status(200).json(student);
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+// // Update Student
+// app.put('/student/:id', async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const { name, fname, age } = req.body;
+
+//     const studentToUpdate = {name, fname, age }
+//     const student = await Student.findOneAndUpdate({ _id: id }, studentToUpdate , { new: true });
+
+//     // const student = await Student.findOneAndUpdate({_id:id}, { name, fname, age })
+    
+//     if (!student) {
+//       return res.status(404).json({ msg: "Student not found" })
+//     }
+    
+//     return res.status(200).json(student);
+// } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+// }
+// })
+
+// // // Delete Student
+// app.delete('/student/:id', async (req, res) => {
+//   try {
+//     const id = req.params.id
+//     const student = await Student.findOneAndDelete({ _id: id });
+
+//     if (!student) {
+//       return res.status(404).json({ msg: "Student not found" })
+//     }
+  
+//     return res.status(200).json({ msg: "Student deleted" });
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // For Practice one more clean CRUD with staff entity
+
+
+// const StaffSchema  = new Schema(
+//   {
+//     name: String,
+//     role: String,
+//     cnic: Number
+//   }
+// );
+
+// const Staff = mongoose.model("Staff", StaffSchema);
+
+// // // Add Staff
+// app.post('/staff', async (req, res) => {
+//   try {
+//     const { namef, rolef, cnicf } = req.body;
+
+//     if (!namef || !rolef || !cnicf ) {
+//       return res.status(400).json({ error: 'Bad request', details: 'Missing name or role or cnic' });
+//     }
+
+    
+//     const newStaff = { name:namef, role:rolef, cnic:cnicf }
+
+//     const newstf = new Staff(newStaff);
+
+//     await newstf.save();
+
+//     return res.status(201).json(newstf);
+
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+// // Get All Staff
+// app.get('/staff', async (req, res) => {
+//   try {
+//     const staffs = await Staff.find()
+    
+//     if(staffs.length === 0){
+//       return res.json({ msg: "Staff not found" });
+//     }
+    
+//     return res.status(200).json(staffs);
+
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+
+
+
+// // Get Single Student
+// app.get('/staff/:id', async (req, res) => {
+
+//   try {
+//     const id = req.params.id
+//     const SingleStaff = await Staff.findById(id);
+//     console.log(SingleStaff)
+//     if (!SingleStaff) {
+//       return res.status(404).json({ msg: "No staff found" })
+//     }
+  
+//     return res.status(200).json(SingleStaff);
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+
+// // Update Student
+// app.put('/staff/:id', async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const { namef, rolef, cnicf } = req.body;
+
+//     const StaffToUpdate = { name:namef, role:rolef, cnic:cnicf }
+//     const Updatedstaff = await Staff.findOneAndUpdate({ _id: id }, StaffToUpdate , { new: true });
+
+//     // const Updatedstaff = await Staff.findOneAndUpdate({_id:id}, { name:namef, role:rolef, cnic:cnicf })
+    
+//     if (!Updatedstaff) {
+//       return res.status(404).json({ msg: "staff not found" })
+//     }
+    
+//     return res.status(200).json(Updatedstaff);
+// } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+// }
+// })
+
+
+// // // Delete staff
+// app.delete('/staff/:id', async (req, res) => {
+//   try {
+//     const id = req.params.id
+//     const staffToDelete = await Staff.findOneAndDelete({ _id: id });
+    
+//     if (!staffToDelete) {
+//       return res.status(404).json({ msg: "staff not found" })
+//     }
+  
+//     return res.status(200).json({ msg: "staff deleted", });
+//   } catch (error) {
+//     return res.status(500).json({ error: 'Server error', details: error.message });
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // With error handling with middleware
 // // Add Student
-app.post('/student', async (req, res) => {
+app.post('/student', async (req, res, next) => {
   try {
     const { name, fname, age } = req.body;
 
+   
     if (!name || !fname || !age ) {
-      return res.status(400).json({ error: 'Bad request', details: 'Missing name or fname or age' });
+      const error = new Error();
+      error.mymsg = "Missing name or fname or age";
+      return next(error)
     }
 
     if(age > 100 || age < 0){
-      return res.status(400).json({ error: 'Bad request', details: 'Invalid age' });
+      const error = new Error();
+      error.mymsg = "Invalid age";
+      return next(error)
     }
-    const newStudent = { name, fname, age }
+
+    //   // Intentionally throwing an error
+    // throw new Error("Intentional error");
+    const newStudent = { name, fname , age }
 
     const newstd = new Student(newStudent);
 
@@ -256,48 +538,55 @@ app.post('/student', async (req, res) => {
     return res.status(201).json(newstd);
 
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
 
 // Get All Students
-app.get('/student', async (req, res) => {
+app.get('/student', async (req, res, next) => {
   try {
     const students = await Student.find()
     console.log(students)
+
     if(students.length === 0){
-      return res.json({ msg: "Student not found" });
+      const error = new Error();
+      error.mymsg = "Student not found";
+      error.status = 404
+      return next(error)
     }
     
     return res.status(200).json(students);
 
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
 
 
 // Get Single Student
-app.get('/student/:id', async (req, res) => {
+app.get('/student/:id', async (req, res, next) => {
 
   try {
     const id = req.params.id
     const student = await Student.findById(id);
     console.log(student)
     if (!student) {
-      return res.status(404).json({ msg: "No student found" })
+      const error = new Error();
+      error.mymsg = "Student not found";
+      error.status = 404
+      return next(error)
     }
   
     return res.status(200).json(student);
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
 // Update Student
-app.put('/student/:id', async (req, res) => {
+app.put('/student/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
     const { name, fname, age } = req.body;
@@ -308,28 +597,34 @@ app.put('/student/:id', async (req, res) => {
     // const student = await Student.findOneAndUpdate({_id:id}, { name, fname, age })
     
     if (!student) {
-      return res.status(404).json({ msg: "Student not found" })
+      const error = new Error();
+      error.mymsg = "Student not found";
+      error.status = 404
+      return next(error)
     }
     
     return res.status(200).json(student);
 } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
 }
 })
 
 // // Delete Student
-app.delete('/student/:id', async (req, res) => {
+app.delete('/student/:id', async (req, res, next) => {
   try {
     const id = req.params.id
     const student = await Student.findOneAndDelete({ _id: id });
 
     if (!student) {
-      return res.status(404).json({ msg: "Student not found" })
+      const error = new Error();
+      error.mymsg = "Student not found";
+      error.status = 404
+      return next(error)
     }
   
     return res.status(200).json({ msg: "Student deleted" });
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
@@ -372,7 +667,7 @@ const StaffSchema  = new Schema(
 const Staff = mongoose.model("Staff", StaffSchema);
 
 // // Add Staff
-app.post('/staff', async (req, res) => {
+app.post('/staff', async (req, res, next) => {
   try {
     const { namef, rolef, cnicf } = req.body;
 
@@ -390,13 +685,13 @@ app.post('/staff', async (req, res) => {
     return res.status(201).json(newstf);
 
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
 
 // Get All Staff
-app.get('/staff', async (req, res) => {
+app.get('/staff', async (req, res, next) => {
   try {
     const staffs = await Staff.find()
     
@@ -407,7 +702,7 @@ app.get('/staff', async (req, res) => {
     return res.status(200).json(staffs);
 
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
@@ -416,7 +711,7 @@ app.get('/staff', async (req, res) => {
 
 
 // Get Single Student
-app.get('/staff/:id', async (req, res) => {
+app.get('/staff/:id', async (req, res, next) => {
 
   try {
     const id = req.params.id
@@ -428,14 +723,14 @@ app.get('/staff/:id', async (req, res) => {
   
     return res.status(200).json(SingleStaff);
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
 
 
 // Update Student
-app.put('/staff/:id', async (req, res) => {
+app.put('/staff/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
     const { namef, rolef, cnicf } = req.body;
@@ -451,13 +746,13 @@ app.put('/staff/:id', async (req, res) => {
     
     return res.status(200).json(Updatedstaff);
 } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
 }
 })
 
 
 // // Delete staff
-app.delete('/staff/:id', async (req, res) => {
+app.delete('/staff/:id', async (req, res, next) => {
   try {
     const id = req.params.id
     const staffToDelete = await Staff.findOneAndDelete({ _id: id });
@@ -468,10 +763,38 @@ app.delete('/staff/:id', async (req, res) => {
   
     return res.status(200).json({ msg: "staff deleted", });
   } catch (error) {
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    next(error)
   }
 })
 
+
+
+
+
+// Route not found
+app.use((req, res, next) => {
+
+  console.log({req})
+
+  const error = new Error(`Not Found: ${req.originalUrl}`);
+  error.status = 404;
+  next(error);
+});
+
+
+
+
+// Error handler middleware
+app.use((err, req, res, next) => {
+  console.log({err})
+  return res.status(err.status || 500).json({
+    error: {
+      message: err.message? err.message : err.mymsg,
+      randomInfo: "Some additinal information",
+      stack: err.stack
+    }
+  });
+});
 
 
 
