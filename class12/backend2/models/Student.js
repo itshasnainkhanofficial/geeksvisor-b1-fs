@@ -1,12 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
 
-const StudentSchema = new Schema({
-  name: String,
-  age: Number
-});
+// schema
+const Schema = mongoose.Schema;
+const StudentSchema  = new Schema(
+  {
+    name: String,
+    fname: String,
+    age: Number
+  }
+);
 
-const Student = mongoose.model('Student', StudentSchema);
-
-export default Student;
+export const Student = mongoose.model("Student", StudentSchema);

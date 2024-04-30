@@ -1,23 +1,46 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import studentRoutes from './routes/studentRoutes.js';
-import connectToMongoDB from './config/db.js';
+import express from 'express'
+import dotenv from 'dotenv'
+import {DBConnect} from './config/db.js'
+import { ErrorHandling } from './middleware/ErrorHandling.js'
+import StudentRoutes from './routes/student.js'
+import StaffRoutes from './routes/staff.js'
 
+const app = express()
 dotenv.config();
-connectToMongoDB();
-const app = express();
-const PORT = process.env.PORT || 3500;
+DBConnect()
+
+const PORT = process.env.PORT || 3500
+
 
 app.use(express.json()); // Middleware to parse JSON requests
 
+
+// Student Routes
+app.use('/student', StudentRoutes)
+
+// Staff Routes
+app.use('/staff', StaffRoutes)
+
+
+// Route not found
 app.use((req, res, next) => {
-  console.log("Middleware running")
-  next();
+
+  console.log({req})
+
+  const error = new Error(`Not Found: ${req.originalUrl}`);
+  error.status = 404;
+  next(error);
 });
 
-// Use student routes
-app.use('/students', studentRoutes);
+
+// Error handler middleware
+app.use(ErrorHandling);
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
+})
+
+
+// Refactor person's CRUD
